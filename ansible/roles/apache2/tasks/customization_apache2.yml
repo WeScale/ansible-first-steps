@@ -37,7 +37,8 @@
   notify: restart apache2
   when: default_conf.stat.exists
 
-- meta: flush_handlers
+- name: flush handlers
+  meta: flush_handlers
 
 - name: Wait for apache2 to start
   wait_for:

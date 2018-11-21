@@ -14,13 +14,14 @@
 - name: install apache2
   apt:
     name: apache2
-    state: presenet
+    state: present
+  notify: start apache2
   register: result
 
 - name: Wait for apache2 is up
   wait_for:
     host: localhost
-    port: "{{ virtualhost.port}}"
+    port: "{{ port}}"
     delay: 10
     timeout: 100
   when: result.changed

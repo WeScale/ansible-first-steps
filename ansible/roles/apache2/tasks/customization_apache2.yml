@@ -38,7 +38,7 @@
 - name: Wait for apache2 to start
   wait_for:
     host: localhost
-    port: "{{ index.port }}"
+    port: "{{ port }}"
     delay: 10
     timeout: 300
   when: result.changed

@@ -8,11 +8,14 @@ path_site: "/etc/apache2/sites-available"
 index_name: "index.html"
 site_name: "wescale.com.conf"
 
+title_message: "Welcome to ESGI CLOUD DAY"
+header_message: "Success ! the wescale server block is working"
+
 template_list:
   - name: index.html.j2
     path: "{{ path_www }}/{{ index_name }}"
-    title: "Welcome to ESGI CLOUD DAY"
-    header: "Success ! the wescale server block is working"
+    title: "{{ title_message }}"
+    header: "{{ header_message }}"
 
   - name: wescale.com.conf.j2
     path: "{{ path_site }}/{{ site_name }}"

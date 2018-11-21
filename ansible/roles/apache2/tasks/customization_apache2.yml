@@ -19,11 +19,6 @@
 
 - name: check if "{{ site_name }}" is already active
   stat:
-    path: "/etc/apache2/sites-enabled/{{ site_name}}"
-  register: site_conf
-
-- name: check if "{{ site_name }}" is already active
-  stat:
     path: "/etc/apache2/sites-enabled//{{ site_name }}"
   register: site_conf
 

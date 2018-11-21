@@ -44,7 +44,6 @@
   wait_for:
     host: localhost
     port: "{{ port }}"
-    search_regex: "{{ title_message }}"
     delay: 10
     timeout: 300
   when: result.changed

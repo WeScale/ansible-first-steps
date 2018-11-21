@@ -1,0 +1,30 @@
+---
+# defaults file for apache2
+dependencies:
+  - curl
+
+path_www: "/var/www/wescale.com/html"
+path_site: "/etc/apache2/sites-available/wescale.com.conf"
+index_name: "index.html"
+site_name: "wescale.com.conf"
+
+template_list:
+  - name: index.html.j2
+    path: "{{ path_www }}/{{ index_name }}"
+
+  - name: wescale.com.conf.j2
+    path: "{{ path_site }}/{{ site_name }}"
+
+ 
+virtualhost:
+  port: 80
+  serveradmin: "admin@wescale.com"
+  servername: "wescale.com"
+  serveralias: "www.wescale.com"
+  documentroot: "{{ path_www }}"
+  errorlog: "/var/log/error.log"
+  customlog: "/var/log/access.log combined"
+
+index:
+  title: "Welcome to ESGI CLOUD DAY"
+  header: "Success ! the wescale server block is working"

@@ -1,0 +1,44 @@
+---
+- name: Create directory "{{ path_www }}"
+  file:
+    path: "{{ path_www }}"
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Templating "{{ item }}"
+  template:
+    src: "{{ item.name }}"
+    dest: "{{ item.path }}"
+    mode: 0755
+  with_items:
+    - "{{ template_list }}"
+  register: result
+
+- name: check if "{{ site_name }}" is already active
+  stat:
+    path: "/etc/apache2/sites-enabled/{{ site_name}}"
+  register: site_conf
+
+- name: check if 000-default.conf is always active
+  stat:
+    path: "/etc/apache2/sites-enabled/000-default.conf"
+  register: default_conf
+
+- name: a2ensite "{{ site_name }}"
+  command: a2ensite "{{ site_name }}"
+  when: not site_conf.stat.exists
+
+- name: a2dissite 000-default.conf
+  command: a2ensite 000-default.conf
+  notify: restart apache2
+  when: not default_conf.stat.exists
+
+- name: Wait for apache2 to start
+  wait_for:
+    host: localhost
+    port: "{{ index.port }}"
+    delay: 10
+    timeout: 300
+  when: result.changed

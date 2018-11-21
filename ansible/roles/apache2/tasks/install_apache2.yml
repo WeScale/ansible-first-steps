@@ -15,8 +15,10 @@
   apt:
     name: apache2
     state: present
-  notify: start apache2
   register: result
+
+- name: flush handlers
+  meta: flush_handlers
 
 - name: Wait for apache2 is up
   wait_for:

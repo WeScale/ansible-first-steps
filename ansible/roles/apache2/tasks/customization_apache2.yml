@@ -14,11 +14,17 @@
     mode: 0755
   with_items:
     - "{{ template_list }}"
+  notify: restart apache2
   register: result
 
 - name: check if "{{ site_name }}" is already active
   stat:
     path: "/etc/apache2/sites-enabled/{{ site_name}}"
+  register: site_conf
+
+- name: check if "{{ site_name }}" is already active
+  stat:
+    path: "/etc/apache2/sites-enabled//{{ site_name }}"
   register: site_conf
 
 - name: check if 000-default.conf is always active
@@ -28,12 +34,15 @@
 
 - name: a2ensite "{{ site_name }}"
   command: a2ensite "{{ site_name }}"
+  notify: restart apache2
   when: not site_conf.stat.exists
 
 - name: a2dissite 000-default.conf
-  command: a2ensite 000-default.conf
+  command: a2dissite 000-default.conf
   notify: restart apache2
-  when: not default_conf.stat.exists
+  when: default_conf.stat.exists
+
+- meta: flush_handlers
 
 - name: Wait for apache2 to start
   wait_for:

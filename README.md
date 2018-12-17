@@ -8,13 +8,13 @@ sudo apt-get install -yq curl
 sudo apt-get install -yq apache2
 
 COMMAND=`systemctl status apache2 | grep "running"`
-if [[ $RESULT == "" ]]
+if [[ $COMMAND == "" ]]
 then
         exit 1
 fi
 
 COMMAND=`curl http://localhost | grep -i "It works"`
-if [[ $RESULT == "" ]]
+if [[ $COMMAND == "" ]]
 then
         exit 1
 fi

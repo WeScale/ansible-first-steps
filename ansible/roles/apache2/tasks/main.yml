@@ -2,9 +2,9 @@
 # tasks file for apache2
 - name: include installation apache2
   include_tasks: install_apache2.yml
-  when:
-    - ansible_os_family == "Debian"
-    - ansible_distribution_major_version >= 8
+#  when:
+#    - ansible_os_family == "Debian"
+#    - ansible_distribution_major_version >= 8
   tags:
     - install
 

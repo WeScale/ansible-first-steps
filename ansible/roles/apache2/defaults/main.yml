@@ -9,7 +9,7 @@ index_name: "index.html"
 site_name: "wescale.com.conf"
 
 title_message: "Welcome to Devoxx"
-header_message: "Success ! the wescale server block for Devoxx is working"
+header_message: "Success ! YEAHHHHHHH NO DEMO EFFECT !!!!!"
 
 template_list:
   - name: index.html.j2

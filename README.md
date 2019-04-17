@@ -25,10 +25,10 @@ sudo chmod -R 755 /var/www/wescale.com
 sudo cat > /var/www/wescale.com/html/index.html <<EOF
 <html>
         <head>
-                <title> Welcome to ESGI CLOUD DAY !</title>
+                <title> Welcome Devoxx !</title>
         </head>
         <body>
-                <h1>Success ! the wescale server block is working !</h1>
+                <h1>Success ! YEAHHHHHHH NO DEMO EFFECT !</h1>
         </body>
 </html>
 EOF

@@ -8,8 +8,8 @@ path_site: "/etc/apache2/sites-available"
 index_name: "index.html"
 site_name: "wescale.com.conf"
 
-title_message: "Welcome to ESGI CLOUD DAY"
-header_message: "Success ! the wescale server block is working"
+title_message: "Welcome to Devoxx"
+header_message: "Success ! the wescale server block for Devoxx is working"
 
 template_list:
   - name: index.html.j2
